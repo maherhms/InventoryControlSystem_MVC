@@ -20,14 +20,15 @@ namespace InventoryControlSystemWeb.Controllers
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost , ActionName("Create")]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Category entity)
+        public IActionResult CreatePOST(Category entity)
         {
             if (ModelState.IsValid)
             {
                 _db.Categories.Add(entity);
                 _db.SaveChanges();
+                TempData["success"] = "Category created successfully";
                 return RedirectToAction("Index","Category");
             }
             return View();
@@ -45,14 +46,15 @@ namespace InventoryControlSystemWeb.Controllers
             }
             return View(category);
         }
-        [HttpPost]
+        [HttpPost , ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Category entity)
+        public IActionResult EditPOST(Category entity)
         {
             if (ModelState.IsValid)
             {
                 _db.Categories.Update(entity);
                 _db.SaveChanges();
+                TempData["success"] = "Category updated successfully";
                 return RedirectToAction("Index", "Category");
             }
             return View();
@@ -81,6 +83,7 @@ namespace InventoryControlSystemWeb.Controllers
             }
             _db.Categories.Remove(category);
             _db.SaveChanges();
+            TempData["success"] = "Category deleted successfully";
             return RedirectToAction("Index", "Category");
         }
     }
