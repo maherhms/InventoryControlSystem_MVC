@@ -51,7 +51,7 @@ namespace InventoryControlSystemWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(entity);
+                _db.Categories.Update(entity);
                 _db.SaveChanges();
                 return RedirectToAction("Index", "Category");
             }
