@@ -20,5 +20,17 @@ namespace InventoryControlSystemWeb.Controllers
         {
             return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Category entity)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Categories.Add(entity);
+                _db.SaveChanges();
+                return RedirectToAction("Index","Category");
+            }
+            return View();
+        }
     }
 }
