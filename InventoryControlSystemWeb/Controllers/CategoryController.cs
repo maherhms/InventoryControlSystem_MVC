@@ -52,12 +52,19 @@ namespace InventoryControlSystemWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Categories.Update(entity);
+                Category? category = _db.Categories.Find(entity.Id);
+                if (category == null)
+                {
+                    return NotFound();
+                }
+
+                category.Name = entity.Name;
+                category.DisplayOrder = entity.DisplayOrder;
                 _db.SaveChanges();
                 TempData["success"] = "Category updated successfully";
                 return RedirectToAction("Index", "Category");
             }
-            return View();
+            return View(entity);
         }
         public IActionResult Delete(int? id)
         {
