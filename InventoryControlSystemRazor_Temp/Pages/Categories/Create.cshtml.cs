@@ -19,6 +19,10 @@ namespace InventoryControlSystemRazor_Temp.Pages.Categories
         }
         public IActionResult OnPost()
         {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
             _db.Categories.Add(Category);
             _db.SaveChanges();
             TempData["success"] = "Category created successfully";

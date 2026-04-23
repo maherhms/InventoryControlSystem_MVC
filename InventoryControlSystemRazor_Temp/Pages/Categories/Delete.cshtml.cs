@@ -31,7 +31,7 @@ namespace InventoryControlSystemRazor_Temp.Pages.Categories
             _db.Categories.Remove(category);
             _db.SaveChanges();
             TempData["success"] = "Category deleted successfully";
-            return RedirectToPage("Index", "Category");
+            return RedirectToPage("Index");
         }
     }
 }
