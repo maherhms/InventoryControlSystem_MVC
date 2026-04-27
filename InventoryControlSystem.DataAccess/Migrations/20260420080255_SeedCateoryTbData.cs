@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace InventoryControlSystemWeb.Migrations
+namespace InventoryControlSystem.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class SeedCateoryTbData : Migration

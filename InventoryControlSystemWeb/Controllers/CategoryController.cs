@@ -1,5 +1,5 @@
-﻿using InventoryControlSystemWeb.Data;
-using InventoryControlSystemWeb.Models;
+﻿using InventoryControlSystem.DataAccess.Data;
+using InventoryControlSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InventoryControlSystemWeb.Controllers

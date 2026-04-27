@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace InventoryControlSystemWeb.Models
+namespace InventoryControlSystem.Models
 {
     public class Category
     {

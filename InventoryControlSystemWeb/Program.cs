@@ -1,4 +1,4 @@
-using InventoryControlSystemWeb.Data;
+using InventoryControlSystem.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
