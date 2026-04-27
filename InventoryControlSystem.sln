@@ -12,6 +12,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryControlSystemRazor_Temp", "InventoryControlSystemRazor_Temp\InventoryControlSystemRazor_Temp.csproj", "{CFF083A9-FF53-4A3F-AFF0-7296180D5A74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryControlSystem.DataAccess", "InventoryControlSystem.DataAccess\InventoryControlSystem.DataAccess.csproj", "{1E386D62-D411-431B-A3DD-FFA86EBF98E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryControlSystem.Models", "InventoryControlSystem.Models\InventoryControlSystem.Models.csproj", "{F2C1F355-C224-4B5C-B714-9E39AFCB5EA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryControlSystem.Utility", "InventoryControlSystem.Utility\InventoryControlSystem.Utility.csproj", "{399C557B-323F-4B67-B766-56839E2DB371}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +32,18 @@ Global
 		{CFF083A9-FF53-4A3F-AFF0-7296180D5A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFF083A9-FF53-4A3F-AFF0-7296180D5A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFF083A9-FF53-4A3F-AFF0-7296180D5A74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E386D62-D411-431B-A3DD-FFA86EBF98E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E386D62-D411-431B-A3DD-FFA86EBF98E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E386D62-D411-431B-A3DD-FFA86EBF98E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E386D62-D411-431B-A3DD-FFA86EBF98E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2C1F355-C224-4B5C-B714-9E39AFCB5EA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2C1F355-C224-4B5C-B714-9E39AFCB5EA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2C1F355-C224-4B5C-B714-9E39AFCB5EA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2C1F355-C224-4B5C-B714-9E39AFCB5EA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{399C557B-323F-4B67-B766-56839E2DB371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{399C557B-323F-4B67-B766-56839E2DB371}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{399C557B-323F-4B67-B766-56839E2DB371}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{399C557B-323F-4B67-B766-56839E2DB371}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
