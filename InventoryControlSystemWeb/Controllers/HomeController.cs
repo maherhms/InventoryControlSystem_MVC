@@ -1,5 +1,5 @@
 using System.Diagnostics;
-using InventoryControlSystemWeb.Models;
+using InventoryControlSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InventoryControlSystemWeb.Controllers

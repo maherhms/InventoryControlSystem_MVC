@@ -1,7 +1,7 @@
-﻿using InventoryControlSystemWeb.Models;
+﻿using InventoryControlSystem.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace InventoryControlSystemWeb.Data
+namespace InventoryControlSystem.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {
