@@ -26,7 +26,7 @@ namespace InventoryControlSystemWeb.Areas.Admin.Controllers
             });
             return View(objProductList);
         }
-        public IActionResult Create()
+        public IActionResult Upsert(int? id)
         {
 
             //ViewBag.CategoryList = CategoryList;
@@ -42,11 +42,22 @@ namespace InventoryControlSystemWeb.Areas.Admin.Controllers
                 Product = new Product(),
             };
 
-            return View(productVM);
+            if (id == null || id == 0)
+            {
+                //create
+                return View(productVM);
+
+            }
+            else
+            {
+                //update
+                productVM.Product = _unitOfWork.Product.Get(u => u.Id == id);
+                return View(productVM);
+            }
         }
-        [HttpPost , ActionName("Create")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreatePOST(ProductVM productVM)
+        public IActionResult Upsert(ProductVM productVM, IFormFile? file)
         {
             if (ModelState.IsValid)
             {
@@ -64,38 +75,6 @@ namespace InventoryControlSystemWeb.Areas.Admin.Controllers
                 });
                 return View(productVM);
             }
-        }
-        public IActionResult Edit(int? id)
-        {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
-            Product? product = _unitOfWork.Product.Get(u => u.Id == id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-            return View(product);
-        }
-        [HttpPost , ActionName("Edit")]
-        [ValidateAntiForgeryToken]
-        public IActionResult EditPOST(Product entity)
-        {
-            if (ModelState.IsValid)
-            {
-                Product? product = _unitOfWork.Product.Get(u => u.Id == entity.Id);
-                if (product == null)
-                {
-                    return NotFound();
-                }
-
-                product.Title = entity.Title;
-                _unitOfWork.Save();
-                TempData["success"] = "Product updated successfully";
-                return RedirectToAction("Index", "Product");
-            }
-            return View(entity);
         }
         public IActionResult Delete(int? id)
         {
