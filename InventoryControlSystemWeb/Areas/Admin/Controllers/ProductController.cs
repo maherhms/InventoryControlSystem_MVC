@@ -162,10 +162,13 @@ namespace InventoryControlSystemWeb.Areas.Admin.Controllers
                 return Json(new { success = false, message = "Error while deleting" });
             }
 
-            var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath, productToBeDeleted.ImageUrl.TrimStart('\\'));
-            if (System.IO.File.Exists(oldImagePath))
+            if (!string.IsNullOrWhiteSpace(productToBeDeleted.ImageUrl))
             {
-                System.IO.File.Delete(oldImagePath);
+                var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath, productToBeDeleted.ImageUrl.TrimStart('\\', '/'));
+                if (System.IO.File.Exists(oldImagePath))
+                {
+                    System.IO.File.Delete(oldImagePath);
+                }
             }
 
             _unitOfWork.Product.Remove(productToBeDeleted);
