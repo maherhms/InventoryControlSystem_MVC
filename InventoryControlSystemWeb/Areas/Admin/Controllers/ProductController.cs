@@ -55,6 +55,10 @@ namespace InventoryControlSystemWeb.Areas.Admin.Controllers
             {
                 //update
                 productVM.Product = _unitOfWork.Product.Get(u => u.Id == id);
+                if (productVM.Product == null)
+                {
+                    return NotFound();
+                }
                 return View(productVM);
             }
         }
