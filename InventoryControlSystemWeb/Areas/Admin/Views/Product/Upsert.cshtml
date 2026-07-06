@@ -20,7 +20,7 @@
 							<label asp-for="Product.Title" class="ms-2"></label>
 							<span asp-validation-for="Product.Title" class="text-danger"></span>
 						</div>
-						<div py-2 col-12">
+						<div class="form-floating py-2 col-12">
 							<label asp-for="Product.Description" class="ms-2 text-muted"></label>
 							<textarea asp-for="Product.Description" class="form-control border-0 shadow"></textarea>
 						</div>
@@ -95,27 +95,14 @@
 
 @section Scripts{
 	<script>
-		tinymce.init({
+				tinymce.init({
 		  selector: 'textarea',
 		  plugins: [
-			// Core editing features
-			'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'lists', 'table', 'visualblocks', 'wordcount',
-			// Your account includes a free trial of TinyMCE premium features
-			// Try the most popular premium features until Jun 2, 2026:
-			'checklist', 'mediaembed', 'casechange', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'advtemplate', 'tinymceai', 'uploadcare', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown','importword', 'exportword', 'exportpdf'
+			'anchor', 'autolink', 'charmap', 'codesample', 'emoticons',
+			'lists', 'table', 'visualblocks', 'wordcount'
 		  ],
-		  toolbar: 'undo redo | tinymceai-chat tinymceai-quickactions tinymceai-review | blocks fontfamily fontsize | bold italic underline strikethrough | addcomment showcomments | spellcheckdialog a11ycheck typography uploadcare | align lineheight | checklist numlist bullist indent outdent',
-		  tinycomments_mode: 'embedded',
-		  tinycomments_author: 'Author name',
-		  mergetags_list: [
-			{ value: 'First.Name', title: 'First Name' },
-			{ value: 'Email', title: 'Email' },
-		  ],
-		  tinymceai_token_provider: async () => {
-			await fetch(`https://demo.api.tiny.cloud/1/qbwnda9pwnmmfig8e529byufmhkgvscs1dkxgfj1b1wevuds/auth/random`, { method: "POST", credentials: "include" });
-			return { token: await fetch(`https://demo.api.tiny.cloud/1/qbwnda9pwnmmfig8e529byufmhkgvscs1dkxgfj1b1wevuds/jwt/tinymceai`, { credentials: "include" }).then(r => r.text()) };
-		  },
-		  uploadcare_public_key: 'f677e1a286945ce55209',
+		  toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | numlist bullist | table | codesample | emoticons',
+		  promotion: false
 		});
 	</script>
 	@{
