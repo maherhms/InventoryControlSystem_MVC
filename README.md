@@ -31,3 +31,50 @@ A modern **ASP.NET Core MVC (.NET 8)** inventory management system built with **
 - Visual Studio / VS Code
 - SSMS
 - Git & GitHub
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Controller as CategoryController
+    participant UnitOfWork
+    participant Repository as CategoryRepository
+    participant DbContext
+    participant Database
+
+    Client->>Controller: GET /admin/category
+    activate Controller
+    Controller->>UnitOfWork: Category.GetAll()
+    activate UnitOfWork
+    UnitOfWork->>Repository: GetAll()
+    activate Repository
+    Repository->>DbContext: DbSet<Category>.ToList()
+    DbContext->>Database: SELECT * FROM Categories
+    Database-->>DbContext: categories
+    DbContext-->>Repository: categories
+    Repository-->>UnitOfWork: IEnumerable<Category>
+    deactivate Repository
+    UnitOfWork-->>Controller: categories
+    deactivate UnitOfWork
+    Controller-->>Client: Category Index View
+    deactivate Controller
+
+    Client->>Controller: POST /admin/category/create
+    activate Controller
+    Controller->>UnitOfWork: Category.Add(entity)
+    activate UnitOfWork
+    UnitOfWork->>Repository: Add(entity)
+    activate Repository
+    Repository->>DbContext: DbSet<Category>.Add(entity)
+    Repository-->>UnitOfWork: -
+    deactivate Repository
+    UnitOfWork->>UnitOfWork: Save()
+    UnitOfWork->>DbContext: SaveChanges()
+    DbContext->>Database: INSERT INTO Categories
+    Database-->>DbContext: success
+    DbContext-->>UnitOfWork: -
+    UnitOfWork-->>Controller: -
+    deactivate UnitOfWork
+    Controller-->>Client: Redirect to Index
+    deactivate Controller
+
+```
