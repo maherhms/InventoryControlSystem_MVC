@@ -2,6 +2,19 @@
 
 A modern **ASP.NET Core MVC (.NET 8)** inventory management system built with **Entity Framework Core**, clean architecture principles, and full CRUD operations for products, categories, and stock tracking. Designed as a professional portfolio project demonstrating real-world MVC patterns, dependency injection, layered architecture, and database-first/EF Core workflows.
 
+<style>
+  .rounded-img {
+    border-radius: 12px;
+  }
+</style>
+
+<p align="center">
+  <img class="rounded-img" src="public/Screenshot 2026-07-20 125902.png" alt="Home section" width="90%" />
+  <img class="rounded-img" src="public/Screenshot 2026-07-20 125910.png" alt="Manage Products section" width="45%" />
+  <img class="rounded-img" src="public/Screenshot 2026-07-20 125916.png" alt="Manage Account Section" width="45%" />
+</p>
+
+
 ---
 
 ## 🚀 Features
