@@ -2,11 +2,14 @@
 using InventoryControlSystem.DataAccess.Data;
 using InventoryControlSystem.DataAccess.Repository.IRepository;
 using InventoryControlSystem.Models;
+using InventoryControlSystem.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InventoryControlSystemWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

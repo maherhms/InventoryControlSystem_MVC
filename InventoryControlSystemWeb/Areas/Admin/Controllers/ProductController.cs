@@ -3,6 +3,8 @@ using InventoryControlSystem.DataAccess.Data;
 using InventoryControlSystem.DataAccess.Repository.IRepository;
 using InventoryControlSystem.Models;
 using InventoryControlSystem.Models.ViewModel;
+using InventoryControlSystem.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -10,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.Routing;
 namespace InventoryControlSystemWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
