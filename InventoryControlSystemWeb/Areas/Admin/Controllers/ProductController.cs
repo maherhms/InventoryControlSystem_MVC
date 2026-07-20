@@ -72,27 +72,49 @@ namespace InventoryControlSystemWeb.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 string wwwRootPath = _webHostEnvironment.WebRootPath;
+
+                // Ensure folder exists (Docker does NOT create it)
+                string productPath = Path.Combine(wwwRootPath, "images/product");
+                Directory.CreateDirectory(productPath);
+
                 if (file != null)
                 {
+                    // Upload new image
                     string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                    string productPath = Path.Combine(wwwRootPath, @"Images\product");
 
+                    // Delete old image if exists
                     if (!string.IsNullOrEmpty(productVM.Product.ImageUrl))
                     {
-                        //delete the old image
-                        var oldImagePath = Path.Combine(wwwRootPath,productVM.Product.ImageUrl.TrimStart('\\'));
+                        var oldImagePath = Path.Combine(wwwRootPath, productVM.Product.ImageUrl.TrimStart('/', '\\'));
                         if (System.IO.File.Exists(oldImagePath))
                         {
                             System.IO.File.Delete(oldImagePath);
                         }
                     }
 
-                    using (var fileStream = new FileStream(Path.Combine(productPath, fileName),FileMode.Create))
+                    using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
                     {
                         file.CopyTo(fileStream);
                     }
-                    productVM.Product.ImageUrl = @"\Images\product\" + fileName;
+
+                    productVM.Product.ImageUrl = "/images/product/" + fileName;
                 }
+                else
+                {
+                    // No image uploaded
+                    if (productVM.Product.Id != 0)
+                    {
+                        // Keep existing image
+                        var objFromDb = _unitOfWork.Product.Get(u => u.Id == productVM.Product.Id);
+                        productVM.Product.ImageUrl = objFromDb.ImageUrl;
+                    }
+                    else
+                    {
+                        // New product with no image → set default
+                        productVM.Product.ImageUrl = "/images/product/default.png";
+                    }
+                }
+
                 if (productVM.Product.Id == 0)
                 {
                     _unitOfWork.Product.Add(productVM.Product);
